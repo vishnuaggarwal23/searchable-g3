@@ -18,6 +18,7 @@ package grails.plugin.searchable.internal.compass.spring;
 import grails.core.GrailsApplication;
 import grails.plugin.searchable.internal.compass.config.*;
 import grails.plugin.searchable.internal.compass.mapping.SearchableCompassClassMappingXmlBuilder;
+import grails.util.Holders;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.lucene.analysis.Analyzer;
@@ -55,6 +56,9 @@ public class DefaultSearchableCompassFactoryBean extends SearchableCompassFactor
      * @throws Exception
      */
     public void afterPropertiesSet() throws Exception {
+        if(grailsApplication == null) {
+            grailsApplication = Holders.getGrailsApplication();
+        }
         Assert.notNull(grailsApplication, getClass().getName() + ".grailsApplication cannot be null");
         Assert.notNull(compassClassMappingXmlBuilder, getClass().getName() + ".compassClassMappingXmlBuilder cannot be null");
         Assert.notNull(resourceLoader, getClass().getName() + ".resourceLoader cannot be null");

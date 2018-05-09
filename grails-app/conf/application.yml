@@ -26,6 +26,10 @@ endpoints:
     jmx:
         enabled: true
 
+environments:
+    development:
+        dataSource:
+            dialect: "org.hibernate.dialect.MySQL5InnoDBDialect"
 ---
 grails:
     mime:
