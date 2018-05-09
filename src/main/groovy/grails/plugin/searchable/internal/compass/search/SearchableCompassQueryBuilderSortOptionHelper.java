@@ -18,7 +18,7 @@ package grails.plugin.searchable.internal.compass.search;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.lucene.search.SortField;
-import org.codehaus.groovy.grails.commons.GrailsApplication;
+import grails.core.GrailsApplication;
 import org.compass.core.Compass;
 import org.compass.core.CompassQuery;
 import org.compass.core.CompassSession;

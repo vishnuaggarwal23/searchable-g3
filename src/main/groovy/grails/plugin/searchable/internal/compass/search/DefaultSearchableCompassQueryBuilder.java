@@ -19,7 +19,7 @@ import grails.plugin.searchable.internal.compass.support.SearchableMethodUtils;
 import groovy.lang.Closure;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.codehaus.groovy.grails.commons.GrailsApplication;
+import grails.core.GrailsApplication;
 import org.codehaus.groovy.runtime.InvokerHelper;
 import org.compass.core.Compass;
 import org.compass.core.CompassQuery;

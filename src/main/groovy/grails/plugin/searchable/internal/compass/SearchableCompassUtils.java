@@ -16,9 +16,9 @@
 package grails.plugin.searchable.internal.compass;
 
 import grails.core.GrailsApplication;
+import grails.core.GrailsDomainClass;
 import grails.plugin.searchable.internal.SearchableUtils;
 import grails.util.Environment;
-import org.codehaus.groovy.grails.commons.GrailsDomainClass;
 import org.compass.core.Compass;
 import org.compass.core.spi.InternalCompass;
 

@@ -15,6 +15,7 @@
  */
 package grails.plugin.searchable.internal.compass.search;
 
+import grails.core.GrailsApplication;
 import grails.plugin.searchable.internal.compass.mapping.CompassMappingUtils;
 import grails.plugin.searchable.internal.compass.support.AbstractSearchableMethod;
 import grails.plugin.searchable.internal.compass.support.SearchableMethodUtils;
@@ -25,7 +26,6 @@ import org.apache.commons.logging.LogFactory;
 import org.apache.lucene.analysis.WhitespaceAnalyzer;
 import org.apache.lucene.index.Term;
 import org.apache.lucene.queryParser.ParseException;
-import org.codehaus.groovy.grails.commons.GrailsApplication;
 import org.compass.core.*;
 import org.compass.core.engine.SearchEngineQueryParseException;
 import org.springframework.util.Assert;

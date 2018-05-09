@@ -24,7 +24,7 @@ import grails.plugin.searchable.internal.compass.search.*;
 import grails.plugin.searchable.internal.compass.support.AbstractSearchableMethod;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.codehaus.groovy.grails.commons.GrailsApplication;
+import grails.core.GrailsApplication;
 import org.compass.core.Compass;
 import org.compass.gps.CompassGps;
 

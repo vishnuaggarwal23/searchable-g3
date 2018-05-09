@@ -17,7 +17,7 @@ package grails.plugin.searchable.internal.compass.search;
 
 import org.apache.commons.collections.MapUtils;
 import org.apache.lucene.queryParser.CompassQueryParser;
-import org.codehaus.groovy.grails.commons.GrailsApplication;
+import grails.core.GrailsApplication;
 import org.codehaus.groovy.runtime.DefaultGroovyMethods;
 import org.codehaus.groovy.runtime.InvokerHelper;
 import org.compass.core.Compass;

@@ -23,7 +23,7 @@ import grails.plugin.searchable.internal.compass.mapping.DefaultSearchableCompas
 import grails.plugin.searchable.internal.compass.spring.DefaultSearchableCompassFactoryBean
 import grails.util.Environment
 import org.apache.commons.logging.LogFactory
-import org.codehaus.groovy.grails.commons.GrailsApplication
+import grails.core.GrailsApplication
 import org.compass.gps.device.hibernate.HibernateGpsDevice
 import org.compass.gps.impl.SingleCompassGps
 import org.springframework.context.ApplicationContext
