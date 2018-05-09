@@ -2,6 +2,7 @@ package grails.plugin.searchable
 
 import grails.core.GrailsApplication
 import grails.plugin.searchable.internal.compass.CompassGpsUtils
+import grails.plugin.searchable.internal.compass.DefaultSearchableMethodFactory
 
 /*
  * Copyright 2007 the original author or authors.
@@ -18,7 +19,6 @@ import grails.plugin.searchable.internal.compass.CompassGpsUtils
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import grails.plugin.searchable.internal.compass.DefaultSearchableMethodFactory
 import grails.plugin.searchable.internal.compass.SearchableCompassUtils
 import grails.plugin.searchable.internal.compass.config.SessionFactoryLookup
 import grails.plugin.searchable.internal.compass.domain.DynamicDomainMethodUtils
@@ -85,46 +85,46 @@ This version is recommended for JDK 1.5+
                 defaultFormats = config.defaultFormats instanceof ConfigObject ? config.defaultFormats.toProperties() : config.defaultFormats
                 compassClassMappingXmlBuilder = new DefaultSearchableCompassClassMappingXmlBuilder()
             }
-        }
 
-        // Compass::GPS
+            // Compass::GPS
 //        lifecycleInjector(org.compass.gps.device.hibernate.lifecycle.DefaultHibernateEntityCollectionLifecycleInjector, true) {}
 //        compassGpsDevice(SpringHibernate3GpsDevice) {
-        compassGpsDevice(HibernateGpsDevice) { bean ->
-            bean.destroyMethod = "stop"
-            name = "hibernate"
-            sessionFactory = { SessionFactoryLookup sfl ->
-                sessionFactory = ref("sessionFactory")
-            }
-            fetchCount = config.fetchCount ?: 5000
+            compassGpsDevice(HibernateGpsDevice) { bean ->
+                bean.destroyMethod = "stop"
+                name = "hibernate"
+                sessionFactory = { SessionFactoryLookup sfl ->
+                    sessionFactory = ref("sessionFactory")
+                }
+                fetchCount = config.fetchCount ?: 5000
 //            lifecycleInjector = lifecycleInjector
-        }
-        compassGps(SingleCompassGps) {
-            compass = compass
-            gpsDevices = [compassGpsDevice]
-        }
+            }
+            compassGps(SingleCompassGps) {
+                compass = compass
+                gpsDevices = [compassGpsDevice]
+            }
 
-        def defaultMethodOptions = config.defaultMethodOptions
-        if (!defaultMethodOptions && config.defaultSearchOptions) {
-            LOG.warn(
-                    "The Searchable Plugin \"defaultSearchOptions\" configuration option is deprecated and " +
-                            "will be removed in the next version. Upgrade the Searchable plugin configuration to the latest format " +
-                            "and use \"defaultMethodOptions\" instead"
-            )
-            System.out.println("WARN: " +
-                    "The Searchable Plugin \"defaultSearchOptions\" configuration option is deprecated and " +
-                    "will be removed in the next version. Upgrade the Searchable plugin configuration to the latest format " +
-                    "and use \"defaultMethodOptions\" instead"
-            )
-            defaultMethodOptions = [search: config.defaultSearchOptions]
+            def defaultMethodOptions = config.defaultMethodOptions
+            if (!defaultMethodOptions && config.defaultSearchOptions) {
+                LOG.warn(
+                        "The Searchable Plugin \"defaultSearchOptions\" configuration option is deprecated and " +
+                                "will be removed in the next version. Upgrade the Searchable plugin configuration to the latest format " +
+                                "and use \"defaultMethodOptions\" instead"
+                )
+                System.out.println("WARN: " +
+                        "The Searchable Plugin \"defaultSearchOptions\" configuration option is deprecated and " +
+                        "will be removed in the next version. Upgrade the Searchable plugin configuration to the latest format " +
+                        "and use \"defaultMethodOptions\" instead"
+                )
+                defaultMethodOptions = [search: config.defaultSearchOptions]
+            }
+            searchableMethodFactory(DefaultSearchableMethodFactory) {
+                compass = compass
+                compassGps = compassGps
+                defaultMethodOptions = defaultMethodOptions
+                grailsApplication = super.grailsApplication
+            }
+            LOG.debug("Done defining Compass and Compass::GPS beans")
         }
-        searchableMethodFactory(DefaultSearchableMethodFactory) {
-            compass = compass
-            compassGps = compassGps
-            defaultMethodOptions = defaultMethodOptions
-            grailsApplication = application
-        }
-        LOG.debug("Done defining Compass and Compass::GPS beans")
     }
 
     // Post initialization spring config
