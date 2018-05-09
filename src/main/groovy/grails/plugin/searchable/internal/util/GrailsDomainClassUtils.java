@@ -36,7 +36,7 @@ public class GrailsDomainClassUtils {
      * @return true if the property is the/an identity property
      */
     public static boolean isIndentityProperty(GrailsDomainClassProperty domainClassProperty) {
-        Mapping mapping = new GrailsDomainBinder().getMapping(domainClassProperty.getDomainClass().getClazz());
+        Mapping mapping = GrailsDomainBinder.getMapping(domainClassProperty.getDomainClass().getClazz());
         if (mapping != null && mapping.getIdentity() instanceof CompositeIdentity) {
             CompositeIdentity identity = (CompositeIdentity) mapping.getIdentity();
             return Arrays.asList(identity.getPropertyNames()).contains(domainClassProperty.getName());

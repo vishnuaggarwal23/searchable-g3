@@ -63,7 +63,8 @@ dependencies {
             'org.apache.lucene:lucene-snowball:2.4.1',
             'org.apache.lucene:lucene-spellchecker:2.4.1')
 
-    compile 'org.grails.plugins:hibernate3:5.0.13'
+    compile "org.grails.plugins:hibernate5"
+    compile "org.hibernate:hibernate-core:5.1.0.Final"
 
     compile 'org.grails:grails-datastore-rest-client:5.0.0.RC2'
 
