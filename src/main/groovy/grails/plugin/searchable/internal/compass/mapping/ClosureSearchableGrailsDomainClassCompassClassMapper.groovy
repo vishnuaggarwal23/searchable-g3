@@ -15,10 +15,10 @@
  */
 package grails.plugin.searchable.internal.compass.mapping
 
+import grails.core.GrailsDomainClass
+import grails.core.GrailsDomainClassProperty
 import org.apache.commons.logging.Log
 import org.apache.commons.logging.LogFactory
-import org.codehaus.groovy.grails.commons.GrailsDomainClass
-import org.codehaus.groovy.grails.commons.GrailsDomainClassProperty
 import org.compass.core.config.CompassConfiguration
 import org.compass.core.converter.Converter
 import org.compass.core.engine.subindex.SubIndexHash
